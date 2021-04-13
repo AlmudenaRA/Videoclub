@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <SeekBar
+    <SearchView
         android:id="@+id/searchField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

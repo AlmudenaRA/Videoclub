@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.videoclub.R
 import com.example.videoclub.model.Movie
 import com.example.videoclub.utils.inflate
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MoviesAdapter(private val listener: (Movie) -> Unit) : RecyclerView.Adapter<MoviesViewHolder>(){
 
@@ -29,6 +31,13 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) : RecyclerView.Adapte
     //Rellena y actualiza el listado de películas
     fun refreshList(moveList: ArrayList<Movie>){
         this.movieList.addAll(moveList)
+        notifyDataSetChanged()
+    }
+
+    fun filterByName(movies: List<Movie>){
+        //limpiar lista
+        movieList.clear()
+        movieList.addAll(movies)
         notifyDataSetChanged()
     }
 }
