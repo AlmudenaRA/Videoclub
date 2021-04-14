@@ -8,4 +8,5 @@ data class Movie(
     val description: String?,
     val cover: String?,
     val year: Int?
+
 ) : Serializable
