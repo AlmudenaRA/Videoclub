@@ -12,15 +12,20 @@ import java.io.InputStream
 import java.nio.charset.Charset
 
 fun Context.getJsonFromAssets(file: String): String?{
-    var json = ""
+    var json: String? = null
 
-    val stream: InputStream = assets.open(file) //abrir el fichero json que tenemos
-    val size: Int = stream.available() //asigna tod el tamaño disponible
-    val buffer = ByteArray(size) //recorre tod el contenido
-    stream.read(buffer) //lee el contenido
-    stream.close()
+    try{
+        val stream: InputStream = assets.open(file) //abrir el fichero json que tenemos
+        val size: Int = stream.available() //asigna tod el tamaño disponible
+        val buffer = ByteArray(size) //recorre tod el contenido
+        stream.read(buffer) //lee el contenido
+        stream.close()
 
-    json = String(buffer, Charset.defaultCharset()) //asignar a la variable json tod lo que ha encontrado en el buffer, convertido en texto plano
+        json = String(buffer, Charset.defaultCharset()) //asignar a la variable json tod lo que ha encontrado en el buffer, convertido en texto plano
+    }catch (e: Exception){
+        e.printStackTrace()
+    }
+
     return json
 }
 

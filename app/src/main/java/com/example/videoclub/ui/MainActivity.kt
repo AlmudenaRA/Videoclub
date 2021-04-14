@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 newText?.let {
                     val filteredList = copyList.filter{
                         it.name.toLowerCase(Locale.getDefault()).contains(newText)
+
                     }
                     adapter.filterByName(filteredList)
                 }
@@ -46,10 +47,10 @@ class MainActivity : AppCompatActivity() {
         })
 
         btSort.setOnClickListener{
-            //adapter.orderByName()
+            adapter.orderByName()
             //adapter.insertObject()
             //adapter.deleteObject()
-            adapter.modifyObject()
+            //adapter.modifyObject()
         }
     }
 
@@ -57,9 +58,13 @@ class MainActivity : AppCompatActivity() {
      * Función que devuelve el listado del json
      */
     private fun getListFromJson(): ArrayList<Movie>{
+        var movieList = arrayListOf<Movie>()
         val json = getJsonFromAssets("movies.json")
-        val movieList = Gson().fromJson(json, Array<Movie>::class.java).toList()
-        copyList.addAll(movieList) //añadir a la copia las peliculas que encuentre
+        json?.let {
+            movieList = ArrayList(Gson().fromJson(json, Array<Movie>::class.java).toList())
+            copyList.addAll(movieList) //añadir a la copia las peliculas que encuentre
+        }
+
         return ArrayList(movieList)
     }
 

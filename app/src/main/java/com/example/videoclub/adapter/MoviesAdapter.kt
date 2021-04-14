@@ -55,7 +55,7 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) : RecyclerView.Adapte
     }
 
     fun modifyObject(){
-        movieList[0].name = "Prueba"
+        //movieList[0].name = "Prueba" //Para poder modificar se necesita una var y no un val
         notifyItemChanged(0)
     }
 
