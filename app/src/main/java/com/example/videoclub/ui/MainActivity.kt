@@ -41,9 +41,16 @@ class MainActivity : AppCompatActivity() {
 
             //Cuando se pulsa la lupa
             override fun onQueryTextSubmit(query: String?): Boolean {
-                TODO("Not yet implemented")
+                return false
             }
         })
+
+        btSort.setOnClickListener{
+            //adapter.orderByName()
+            //adapter.insertObject()
+            //adapter.deleteObject()
+            adapter.modifyObject()
+        }
     }
 
     /**

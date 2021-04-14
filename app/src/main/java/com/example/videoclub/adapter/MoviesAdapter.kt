@@ -40,4 +40,28 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) : RecyclerView.Adapte
         movieList.addAll(movies)
         notifyDataSetChanged()
     }
+
+    fun orderByName(){
+        val sortedList = movieList.sortedBy { it.name }
+        movieList.clear()
+        movieList.addAll(sortedList)
+        notifyDataSetChanged()
+    }
+
+    fun insertObject(){
+        val item = Movie(13, "Prueba", "Prueba", "https://image.tmdb.org/t/p/original//dRZpdpKLgN9nk57zggJCs1TjJb4.jpg", 1972)
+        movieList.add(0, item)
+        notifyItemInserted(0)
+    }
+
+    fun modifyObject(){
+        movieList[0].name = "Prueba"
+        notifyItemChanged(0)
+    }
+
+    fun deleteObject(){
+        movieList.removeAt(0)
+        notifyItemRemoved(0)
+
+    }
 }
